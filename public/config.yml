@@ -116,8 +116,8 @@ collections:
         widget: "relation"
         collection: books
         valueField: "{{slug}}"
-        searchFields: ["name"]
-        displayFields: ["name"]
+        searchFields: ["title"]
+        displayFields: ["title"]
         multiple: true
   - label: "Books"
     name: books
