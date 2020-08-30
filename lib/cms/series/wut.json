@@ -4,5 +4,8 @@
   "description": "this",
   "books": [
     "testing-testing"
+  ],
+  "authors": [
+    "david-bruns"
   ]
 }
