@@ -1,5 +1,5 @@
 import React from "react";
-import fs from "fs/promises";
+import fs from "fs";
 import path from "path";
 
 function Model(props) {
@@ -12,7 +12,7 @@ export async function getStaticProps() {
   async function loadJsonFile({ path }) {
     let config;
     try {
-      config = JSON.parse(await fs.readFile(path));
+      config = JSON.parse(await fs.promises.readFile(path));
       if (config.slug === undefined) {
         const pathComponents = path.split("/");
         const filename = pathComponents[pathComponents.length - 1];
@@ -27,7 +27,7 @@ export async function getStaticProps() {
   async function loadJsonDirectory({ dirPath }) {
     return (
       await Promise.all(
-        (await fs.readdir(dirPath))
+        (await fs.promises.readdir(dirPath))
           .map((filename) => path.join(dirPath, filename))
           .map((path) => loadJsonFile({ path }))
       )
