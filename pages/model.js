@@ -11,7 +11,7 @@ function Model(props) {
 
 export async function getStaticProps() {
   return {
-    props: load(),
+    props: await load(),
   };
 }
 
