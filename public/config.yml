@@ -119,15 +119,6 @@ collections:
         displayFields: ["title"]
         multiple: true
         required: false
-      - label: "Authors"
-        name: "authors"
-        widget: "relation"
-        collection: "authors"
-        valueField: "{{slug}}"
-        searchFields: ["name"]
-        displayFields: ["name"]
-        multiple: true
-        required: false
   - label: "Books"
     name: "books"
     folder: "lib/cms/books"
