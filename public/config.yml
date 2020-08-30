@@ -111,7 +111,7 @@ collections:
         name: "books"
         widget: "relation"
         collection: "books"
-        valueField: "title"
+        valueField: "*"
         searchFields: ["title"]
         displayFields: ["title"]
         multiple: true
@@ -130,3 +130,12 @@ collections:
       - label: "Description"
         name: "description"
         widget: "markdown"
+  - label: "Authors"
+    name: "authors"
+    folder: "lib/cms/authors"
+    create: true
+    identifier_field: "name"
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
