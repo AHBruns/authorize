@@ -3,5 +3,8 @@
   "tagLine": "this",
   "description": "thing",
   "series": "wut",
-  "coverImage": "/images/uploads/lazarus-project-ebook_1000.jpg"
+  "coverImage": "/images/uploads/lazarus-project-ebook_1000.jpg",
+  "authors": [
+    "david-bruns"
+  ]
 }
