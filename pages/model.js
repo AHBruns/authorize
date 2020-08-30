@@ -27,13 +27,19 @@ export async function getStaticProps() {
   }
 
   async function loadJsonDirectory({ dirPath }) {
-    return (
-      await Promise.all(
-        (await fs.promises.readdir(dirPath))
-          .map((filename) => path.join(dirPath, filename))
-          .map((path) => loadJsonFile({ path }))
-      )
-    ).reduce((acc, elem) => ({ ...acc, [elem.slug]: elem }), {});
+    let loadedDir;
+    try {
+      loadedDir = (
+        await Promise.all(
+          (await fs.promises.readdir(dirPath))
+            .map((filename) => path.join(dirPath, filename))
+            .map((path) => loadJsonFile({ path }))
+        )
+      ).reduce((acc, elem) => ({ ...acc, [elem.slug]: elem }), {});
+    } catch (err) {
+      loadedDir = {};
+    }
+    return loadedDir;
   }
 
   function populate({ toPopulate, populateFrom }) {
