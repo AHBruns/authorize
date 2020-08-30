@@ -4,7 +4,9 @@ import path from "path";
 
 function Model(props) {
   return (
-    <pre style={{ maxWidth: "100vw" }}>{JSON.stringify(props, null, 2)}</pre>
+    <pre style={{ maxWidth: "100vw" }}>
+      {JSON.stringify(props ?? {}, null, 2)}
+    </pre>
   );
 }
 
