@@ -118,7 +118,7 @@ collections:
         searchFields: ["title"]
         displayFields: ["title"]
         multiple: true
-        require: false
+        required: false
       - label: "Authors"
         name: "authors"
         widget: "relation"
@@ -127,7 +127,7 @@ collections:
         searchFields: ["name"]
         displayFields: ["name"]
         multiple: true
-        require: false
+        required: false
   - label: "Books"
     name: "books"
     folder: "lib/cms/books"
@@ -152,7 +152,7 @@ collections:
         searchFields: ["name"]
         displayFields: ["name"]
         multiple: true
-        require: false
+        required: false
       - label: "Series"
         name: "series"
         widget: "relation"
@@ -161,7 +161,7 @@ collections:
         searchFields: ["name"]
         displayFields: ["name"]
         multiple: false
-        require: false
+        required: false
       - label: "Cover Image"
         name: "coverImage"
         widget: "image"
