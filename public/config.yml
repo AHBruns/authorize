@@ -18,82 +18,82 @@ collections:
         file: "lib/cms/about-page-config.json"
         fields:
           - label: "Main Section"
-            name: "mainSection"
+            name: mainSection
             widget: "object"
             fields:
               - label: "Title"
-                name: "title"
+                name: title
                 widget: "string"
               - label: "Description"
-                name: "description"
+                name: description
                 widget: "markdown"
               - label: "Headshot"
-                name: "headshot"
+                name: headshot
                 widget: "image"
                 allow_multiple: false
           - label: "Video Section"
-            name: "videoSection"
+            name: videoSection
             widget: "object"
             fields:
               - label: "Title"
-                name: "title"
+                name: title
                 widget: "string"
               - label: "Video Embed Link"
-                name: "video-embed-link"
+                name: videoEmbedLink
                 widget: "string"
       - label: "Contact Page"
         name: "contactPage"
         file: "lib/cms/contact-page-config.json"
         fields:
           - label: "Form Section"
-            name: "formSection"
+            name: formSection
             widget: "object"
             fields:
               - label: "Title"
-                name: "title"
+                name: title
                 widget: "string"
       - label: "Landing Page"
         name: "landingPage"
         file: "lib/cms/landing-page-config.json"
         fields:
           - label: "Desktop Background Image"
-            name: "desktopBackgroundImage"
+            name: desktopBackgroundImage
             widget: "image"
             allow_multiple: false
           - label: "Main Section"
-            name: "mainSection"
+            name: mainSection
             widget: "object"
             fields:
               - label: "Call To Action"
-                name: "callToAction"
+                name: callToAction
                 widget: "string"
               - label: "Top Newsletter"
-                name: "topNewsletter"
+                name: topNewsletter
                 widget: "object"
                 fields:
                   - label: "Title"
-                    name: "title"
+                    name: title
                     widget: "string"
                   - label: "Body"
-                    name: "body"
+                    name: body
                     widget: "markdown"
                   - label: "Mobile Book Cover Image"
-                    name: "mobileBookCoverImage"
+                    name: mobileBookCoverImage
                     widget: "image"
                     allow_multiple: false
                     hint: "This is only shown on small screens."
               - label: "Bottom Newsletter"
-                name: "bottomNewsletter"
+                name: bottomNewsletter
                 widget: "object"
                 fields:
                   - label: "Title"
-                    name: "title"
+                    name: title
                     widget: "string"
                   - label: "Body"
-                    name: "body"
+                    name: body
                     widget: "markdown"
                   - label: "Mobile Book Cover Image"
-                    name: "mobileBookCoverImage"
+                    name: mobileBookCoverImage
                     widget: "image"
                     allow_multiple: false
                     hint: "This is only shown on small screens."
@@ -127,13 +127,12 @@ collections:
     name: "books"
     folder: "lib/cms/books"
     create: true
-    identifier_field: title
     extension: "json"
     format: "json"
     slug: "{{slug}}"
     fields:
       - label: "Title"
-        name: title
+        name: name
         widget: "string"
       - label: "Tag Line"
         name: "tagLine"
@@ -145,11 +144,11 @@ collections:
     name: "authors"
     folder: "lib/cms/authors"
     create: true
-    identifier_field: "name"
+    identifier_field: name
     extension: "json"
     format: "json"
     slug: "{{slug}}"
     fields:
       - label: "Name"
-        name: "name"
+        name: name
         widget: "string"
