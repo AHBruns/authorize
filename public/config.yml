@@ -2,16 +2,16 @@ backend:
   name: git-gateway
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
 collections:
   - label: "Static Pages"
     name: "staticPages"
     delete: false
     extension: "json"
     format: "json"
-    slug:
-      encoding: "ascii"
-      clean_accents: true
-      sanitize_replacement: "-"
     files:
       - label: "About Page"
         name: "aboutPage"
@@ -104,10 +104,7 @@ collections:
     identifier_field: "name"
     extension: "json"
     format: "json"
-    slug:
-      encoding: "ascii"
-      clean_accents: true
-      sanitize_replacement: "-"
+    slug: "{{slug}}"
     fields:
       - label: "Name"
         name: "name"
@@ -133,10 +130,7 @@ collections:
     identifier_field: "title"
     extension: "json"
     format: "json"
-    slug:
-      encoding: "ascii"
-      clean_accents: true
-      sanitize_replacement: "-"
+    slug: "{{slug}}"
     fields:
       - label: "Title"
         name: "title"
@@ -154,10 +148,7 @@ collections:
     identifier_field: "name"
     extension: "json"
     format: "json"
-    slug:
-      encoding: "ascii"
-      clean_accents: true
-      sanitize_replacement: "-"
+    slug: "{{slug}}"
     fields:
       - label: "Name"
         name: "name"
