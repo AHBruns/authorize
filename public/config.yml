@@ -111,9 +111,9 @@ collections:
         name: "books"
         widget: "relation"
         collection: "books"
-        valueField: "*"
+        valueField: "title"
         searchFields: ["title"]
-        displayFields: ["title", "tagLine"]
+        displayFields: ["title"]
         multiple: true
   - label: "Books"
     name: "books"
