@@ -1,6 +1,4 @@
 import React from "react";
-import { promises as fs } from "fs";
-import path from "path";
 
 function Model(props) {
   return (
@@ -8,81 +6,85 @@ function Model(props) {
   );
 }
 
-async function loadJsonFile({ path }) {
-  let config;
-  try {
-    config = JSON.parse(await fs.readFile(path));
-    if (config.slug === undefined) {
-      const pathComponents = path.split("/");
-      const filename = pathComponents[pathComponents.length - 1];
-      config.slug = filename.split(".").slice(0, -1).join(".");
+export async function getStaticProps() {
+  import fs from "fs/promises";
+  import path from "path";
+
+  async function loadJsonFile({ path }) {
+    let config;
+    try {
+      config = JSON.parse(await fs.readFile(path));
+      if (config.slug === undefined) {
+        const pathComponents = path.split("/");
+        const filename = pathComponents[pathComponents.length - 1];
+        config.slug = filename.split(".").slice(0, -1).join(".");
+      }
+    } catch (err) {
+      config = null;
     }
-  } catch (err) {
-    config = null;
+    return config;
   }
-  return config;
-}
 
-async function loadJsonDirectory({ dirPath }) {
-  return (
-    await Promise.all(
-      (await fs.readdir(dirPath))
-        .map((filename) => path.join(dirPath, filename))
-        .map((path) => loadJsonFile({ path }))
-    )
-  ).reduce((acc, elem) => ({ ...acc, [elem.slug]: elem }), {});
-}
+  async function loadJsonDirectory({ dirPath }) {
+    return (
+      await Promise.all(
+        (await fs.readdir(dirPath))
+          .map((filename) => path.join(dirPath, filename))
+          .map((path) => loadJsonFile({ path }))
+      )
+    ).reduce((acc, elem) => ({ ...acc, [elem.slug]: elem }), {});
+  }
 
-function populate({ toPopulate, populateFrom }) {
-  const output = {};
+  function populate({ toPopulate, populateFrom }) {
+    const output = {};
 
-  Object.keys(toPopulate).forEach((key) => {
-    if (key in populateFrom) {
-      if (toPopulate[key] === null) output[key] = null;
-      else if (Array.isArray(toPopulate[key]))
-        output[key] = toPopulate[key].map((slug) => populateFrom[key][slug]);
-      else output[key] = populateFrom[key][toPopulate[key]];
-    } else output[key] = toPopulate[key];
-  });
+    Object.keys(toPopulate).forEach((key) => {
+      if (key in populateFrom) {
+        if (toPopulate[key] === null) output[key] = null;
+        else if (Array.isArray(toPopulate[key]))
+          output[key] = toPopulate[key].map((slug) => populateFrom[key][slug]);
+        else output[key] = populateFrom[key][toPopulate[key]];
+      } else output[key] = toPopulate[key];
+    });
 
-  return output;
-}
+    return output;
+  }
 
-function deepPopulate({ objects, depth }) {
-  function deepPopulateHelper({ objectsToPopulate, populateFrom, depth }) {
-    if (depth <= 0) return populateFrom;
+  function deepPopulate({ objects, depth }) {
+    function deepPopulateHelper({ objectsToPopulate, populateFrom, depth }) {
+      if (depth <= 0) return populateFrom;
+
+      return deepPopulateHelper({
+        objectsToPopulate,
+        populateFrom: Object.entries(objectsToPopulate).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [key]: Object.entries(value).reduce(
+              (acc, [key, subValues]) => ({
+                ...acc,
+                [key]: populate({
+                  toPopulate: subValues,
+                  populateFrom,
+                }),
+              }),
+              {}
+            ),
+          }),
+          {}
+        ),
+        depth: depth - 1,
+      });
+    }
 
     return deepPopulateHelper({
-      objectsToPopulate,
-      populateFrom: Object.entries(objectsToPopulate).reduce(
-        (acc, [key, value]) => ({
-          ...acc,
-          [key]: Object.entries(value).reduce(
-            (acc, [key, subValues]) => ({
-              ...acc,
-              [key]: populate({
-                toPopulate: subValues,
-                populateFrom,
-              }),
-            }),
-            {}
-          ),
-        }),
-        {}
-      ),
-      depth: depth - 1,
+      objectsToPopulate: objects,
+      populateFrom: objects,
+      depth,
     });
   }
 
-  return deepPopulateHelper({
-    objectsToPopulate: objects,
-    populateFrom: objects,
-    depth,
-  });
-}
-
-export async function getStaticProps() {
   const cmsDir = path.join(process.cwd(), "lib/cms");
+
   const aboutPageConfig = await loadJsonFile({
     path: path.join(cmsDir, "about-page-config.json"),
   });
