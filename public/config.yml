@@ -2,10 +2,6 @@ backend:
   name: git-gateway
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
-slug:
-  encoding: "ascii"
-  clean_accents: true
-  sanitize_replacement: "-"
 collections:
   - label: "Static Pages"
     name: "staticPages"
@@ -116,15 +112,15 @@ collections:
         name: "description"
         widget: "markdown"
       - label: "Books"
-        name: "books"
+        name: books
         widget: "relation"
-        collection: "books"
+        collection: books
         valueField: "{{slug}}"
         searchFields: ["name"]
         displayFields: ["name"]
         multiple: true
   - label: "Books"
-    name: "books"
+    name: books
     folder: "lib/cms/books"
     create: true
     extension: "json"
@@ -132,13 +128,13 @@ collections:
     slug: "{{slug}}"
     fields:
       - label: "Title"
-        name: name
+        name: title
         widget: "string"
       - label: "Tag Line"
-        name: "tagLine"
+        name: tagLine
         widget: "string"
       - label: "Description"
-        name: "description"
+        name: description
         widget: "markdown"
   - label: "Authors"
     name: "authors"
