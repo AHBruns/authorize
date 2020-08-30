@@ -1,0 +1,16 @@
+{
+  "mainSection": {
+    "callToAction": "Sign-up For The Newsletters",
+    "topNewsletter": {
+      "title": "THE TWO NAVY GUYS READERS GROUP",
+      "body": "Co-authors David Bruns and J.R. Olson write thrillers like *Weapons of Mass Deception*, about nuclear terrorism.\n\nFriends of the *Two Navy Guys* get a free copy of *Death of a Pawn*, a story about the mysterious real-life death of Argentinean Special Prosecutor in 2015.",
+      "mobileBookCoverImage": "/images/uploads/weapons-cover-small-web.jpg"
+    },
+    "bottomNewsletter": {
+      "title": "THE SPECULATIVE READERS GROUP",
+      "body": "The Speculative Reader's Group is for those who love old-school sci-fi. If you're a *Star Trek* fan and firmly believe *DUNE* is one of the finest novels ever, then you are my people.\n\nSpeculators get a free copy of my sci-fi/fantasy novel *Irradiance*.",
+      "mobileBookCoverImage": "/images/uploads/lazarus-project-ebook_1000.jpg"
+    }
+  },
+  "desktopBackgroundImage": "/images/uploads/main_bg.jpg"
+}
