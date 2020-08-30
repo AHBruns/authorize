@@ -97,13 +97,13 @@ collections:
     name: "series"
     folder: "lib/cms/series"
     create: true
-    identifier_field: name
+    identifier_field: "name"
     extension: "json"
     format: "json"
     slug: "{{slug}}"
     fields:
       - label: "Name"
-        name: name
+        name: "name"
         widget: "string"
       - label: "Tag Line"
         name: "tagLine"
@@ -128,7 +128,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - label: "Title"
-        name: title
+        name: "title"
         widget: "string"
       - label: "Tag Line"
         name: tagLine
