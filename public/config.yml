@@ -125,7 +125,7 @@ collections:
     create: true
     extension: "json"
     format: "json"
-    slug: "{{slug}}"
+    slug: "{{title}}-{{slug}}"
     fields:
       - label: "Title"
         name: "title"
