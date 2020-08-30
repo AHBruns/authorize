@@ -1,4 +1,6 @@
 import React from "react";
+import fs from "fs/promises";
+import path from "path";
 
 function Model(props) {
   return (
@@ -7,9 +9,6 @@ function Model(props) {
 }
 
 export async function getStaticProps() {
-  import fs from "fs/promises";
-  import path from "path";
-
   async function loadJsonFile({ path }) {
     let config;
     try {
