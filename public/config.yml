@@ -97,6 +97,8 @@ collections:
     folder: "lib/cms/series"
     create: true
     identifier_field: "name"
+    extension: "json"
+    format: "json"
     fields:
       - label: "Name"
         name: "name"
@@ -120,6 +122,8 @@ collections:
     folder: "lib/cms/books"
     create: true
     identifier_field: "title"
+    extension: "json"
+    format: "json"
     fields:
       - label: "Title"
         name: "title"
@@ -135,6 +139,8 @@ collections:
     folder: "lib/cms/authors"
     create: true
     identifier_field: "name"
+    extension: "json"
+    format: "json"
     fields:
       - label: "Name"
         name: "name"
