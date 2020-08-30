@@ -113,7 +113,7 @@ collections:
         collection: "books"
         valueField: "*"
         searchFields: ["title"]
-        displayFields: ["title"]
+        displayFields: ["title", "tagLine"]
         multiple: true
   - label: "Books"
     name: "books"
