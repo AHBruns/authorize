@@ -107,7 +107,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - label: "Name"
-        name: "name"
+        name: name
         widget: "string"
       - label: "Tag Line"
         name: "tagLine"
@@ -130,10 +130,10 @@ collections:
     identifier_field: title
     extension: "json"
     format: "json"
-    slug: "book-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - label: "Title"
-        name: "title"
+        name: title
         widget: "string"
       - label: "Tag Line"
         name: "tagLine"
