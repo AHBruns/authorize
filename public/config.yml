@@ -158,6 +158,8 @@ collections:
         widget: "relation"
         collection: "series"
         valueField: "{{slug}}"
+        searchFields: ["name"]
+        displayFields: ["name"]
         multiple: false
         require: false
       - label: "Cover Image"
