@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import fs from "fs/promises";
+import React from "react";
+import { promises as fs } from "fs";
 import path from "path";
 
 function Model(props) {
