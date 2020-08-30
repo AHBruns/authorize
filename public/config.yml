@@ -95,6 +95,41 @@ collections:
                     widget: "image"
                     allow_multiple: false
                     hint: "This is only shown on small screens."
+  - label: "Universes"
+    name: "universes"
+    folder: "lib/cms/universes"
+    create: true
+    identifier_field: "name"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
+      - label: "Tag Line"
+        name: "tagLine"
+        widget: "string"
+      - label: "Description"
+        name: "description"
+        widget: "markdown"
+      - label: "Standalone Books"
+        name: "standaloneBooks"
+        widget: "relation"
+        collection: "books"
+        valueField: "{{slug}}"
+        searchFields: ["title"]
+        displayFields: ["title"]
+        multiple: true
+      - label: "Series"
+        name: "series"
+        widget: "relation"
+        collection: "series"
+        valueField: "{{slug}}"
+        searchFields: ["name"]
+        displayFields: ["name"]
+        multiple: true
   - label: "Series"
     name: "series"
     folder: "lib/cms/series"
@@ -122,7 +157,6 @@ collections:
         searchFields: ["title"]
         displayFields: ["title"]
         multiple: true
-        required: false
   - label: "Books"
     name: "books"
     folder: "lib/cms/books"
